@@ -28,7 +28,7 @@ function Navbar(props) {
                 <div className="collapse navbar-collapse" id='nav'>
                     <h4 className="navbar-nav ms-sm-auto ms-1 me-1 justify-content-center">
  <div className='nav-item me-md-1'>
- <Link to='/' className={val.home+' ps-1 '}>Home</Link>
+ <Link to='/rajapandiyan_portfolio/' className={val.home+' ps-1 '}>Home</Link>
 </div> 
  <div className='nav-item me-md-1'><Link to='/about' className={val.about+' ps-1'}><span></span>About</Link>
 </div>

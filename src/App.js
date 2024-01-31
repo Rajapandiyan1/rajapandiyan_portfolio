@@ -16,7 +16,7 @@ function App() {
       <div className="row m-0 p-0">
         <div className="col-12 p-0 m-0">
         <Routes>
-            <Route path="/" exact element={<Home message={setactive} />} />
+            <Route path="/rajapandiyan_portfolio/" exact element={<Home message={setactive} />} />
             <Route path="/about" element={<About message={setactive}/>} />
             <Route path="/project" element={<Project message={setactive}/>} />
             <Route path="/contact" element={<Contact message={setactive}/>} />
