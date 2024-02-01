@@ -22,6 +22,8 @@ let [err,seterr]=useState(false)
     setsuc(false)
    }, 5000);
   }
+
+  
   return (
     <div className='ms-0 me-0 ps-md-5 pt-md-5' style={{minHeight:'86vh',marginTop:'10vh'}}>
       <div className="row me-0 justify-content-center align-items-center">
