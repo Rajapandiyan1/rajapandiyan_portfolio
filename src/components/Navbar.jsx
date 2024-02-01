@@ -17,7 +17,6 @@ function Navbar(props) {
         }
     },[props.message])
     return (
-        // <div className='row'>
         <div className='col-12  ps-0 pe-0 m-0
         ' style={{ minHeight: '10vh' }}>
             <div className="navbar bg-dark mt-0 navbar-expand-md" data-bs-theme="dark">
