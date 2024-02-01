@@ -4,7 +4,7 @@ import emailjs from 'emailjs-com'
 import {motion} from 'framer-motion'
 function Contact(props) {
   let [data,setData]=useState({to_name:'',message:'',email:''});
-let [suc,setsuc]=useState(true)
+let [suc,setsuc]=useState(false)
 let [err,seterr]=useState(false)
   useEffect(()=>{
     props.message("contact");
