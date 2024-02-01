@@ -15,7 +15,7 @@ let [err,seterr]=useState(false)
   
   setData({to_name:'',message:'',email:''})
    await emailjs.init('pJdjQkbV3aLx7enpa');
-   await emailjs.send('service_cut4955','template_wd4krr7',clone).then((data)=>{if(data.status){setsuc(true)}else{
+   await emailjs.send('service_cut4955','template_wd4krr7',clone).then((data)=>{if(data.status==200){setsuc(true)}else{
     seterr(true)
    }}).catch((e)=>{console.log(e)})
    setTimeout(() => {
