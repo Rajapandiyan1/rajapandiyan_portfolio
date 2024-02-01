@@ -7,17 +7,16 @@ function Navbar(props) {
             setvalue({home:'nav-link text-warning ps-1',about:'nav-link  text-white',project:'nav-link  text-white',contact:'nav-link  text-white'})
         }
         else if(props.message=="about"){
-            setvalue({about:'nav-link text-warning ps-1',home:'nav-link  text-white',project:'nav-link  text-white',contact:'nav-link  text-white'})
+            setvalue({about:'nav-link text-warning ps-1',home:'nav-link  text-white',project:'nav-link  text-white',contact:'nav-link  text-white'});
         }
         else if(props.message == "project"){
-            setvalue({home:'nav-link  text-white',about:'nav-link  text-white',project:'nav-link text-warning ps-1',contact:'nav-link  text-white'})  
+            setvalue({home:'nav-link  text-white',about:'nav-link  text-white',project:'nav-link text-warning ps-1',contact:'nav-link text-white'});
         }
         else if(props.message == "contact"){
-            setvalue({home:'nav-link  text-white',about:'nav-link  text-white',project:'nav-link  text-white',contact:'nav-link text-warning ps-1'})  
+            setvalue({home:'nav-link  text-white',about:'nav-link  text-white',project:'nav-link  text-white',contact:'nav-link text-warning ps-1'});
         }
     },[props.message])
     return (
-        // <div className='row'>
     <div className='col-12 ps-0 pe-0 m-0
         ' style={{ minHeight: '10vh' }}>
             <div className="navbar bg-dark mt-0 navbar-expand-md" data-bs-theme="dark">
