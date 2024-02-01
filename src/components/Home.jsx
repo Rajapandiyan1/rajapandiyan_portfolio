@@ -32,8 +32,8 @@ function Home(props) {
         </div>
       </div>
       <div className="col-md-4 d-flex align-items-center  justify-content-center col-8 order-md-1 order-1 image" >
-        <div className="profile  mt-sm-0" style={{width:'300px'}}>
-        <motion.img initial={{opacity:0,x:-50}} animate={{opacity:1,x:0}} transition={{duration:1}} className='img-fluid border rounded-3' src={Rajapandiyan} alt="profile" ></motion.img>
+        <div className="profile mt-5  mt-sm-0" style={{width:'300px'}}>
+        <motion.img initial={{opacity:0,x:-50}} animate={{opacity:1,x:0}} transition={{duration:1}} className='img-fluid border rounded-3 mt-5' src={Rajapandiyan} alt="profile" ></motion.img>
         {/* <img className='img-fluid border rounded-3' src={Rajapandiyan} alt="u" /> */}
         </div>
       </div>

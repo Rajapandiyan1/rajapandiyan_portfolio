@@ -18,10 +18,11 @@ function Navbar(props) {
     },[props.message])
     return (
         // <div className='row'>
-        <div className='col-12  ps-0 pe-0 m-0
+    <div className='col-12 ps-0 pe-0 m-0
         ' style={{ minHeight: '10vh' }}>
             <div className="navbar bg-dark mt-0 navbar-expand-md" data-bs-theme="dark">
-                <h4 className="navabar-brand text-white ms-3"><span className='text-warning'>D</span>eveloper</h4>
+                <h4 className="navabar-brand text-white ms-3">
+                <span className="text-warning">D</span>eveloper</h4>
                 <div className="navbar-toggler me-3">
                     <div className="navbar-toggler-icon text-warning" data-bs-toggle='collapse' data-bs-target="#nav"></div>
                 </div>
@@ -38,10 +39,9 @@ function Navbar(props) {
 </div> 
                     </h4>
                 </div>
-
             </div>
         </div>
-        // </div>
+    
     )
 }
 
