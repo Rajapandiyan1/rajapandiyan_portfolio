@@ -4,21 +4,31 @@ import emailjs from 'emailjs-com'
 import {motion} from 'framer-motion'
 function Contact(props) {
   let [data,setData]=useState({to_name:'',message:'',email:''});
-
+let [suc,setsuc]=useState(true)
+let [err,seterr]=useState(false)
   useEffect(()=>{
     props.message("contact");
     console.log()
   })
  async function sub(params) {
   let clone=data;
+  
   setData({to_name:'',message:'',email:''})
    await emailjs.init('pJdjQkbV3aLx7enpa');
-   await emailjs.send('service_cut4955','template_wd4krr7',clone).then((data)=>{console.log(data)}).catch((e)=>{console.log(e)})
+   await emailjs.send('service_cut4955','template_wd4krr7',clone).then((data)=>{if(data.status){setsuc(true)}else{
+    seterr(true)
+   }}).catch((e)=>{console.log(e)})
+   setTimeout(() => {
+    setsuc(false)
+   }, 5000);
   }
   return (
     <div className='ms-0 me-0 ps-md-5 pt-md-5' style={{minHeight:'86vh',marginTop:'10vh'}}>
       <div className="row me-0 justify-content-center align-items-center">
-
+{suc && <div className='col-12 alert alert-dismissible alert-success me-4'>
+  <div className="btn-close" onClick={()=>{setsuc(false)}}>
+    </div>
+    send mail successfully</div>}
         <div className="col-12 mt-3 mt-md-0">
         <div  className=' col-12 ps-5  h1 fw-6'>Contact Us</div>
         </div>
