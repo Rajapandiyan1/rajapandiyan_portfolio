@@ -8,7 +8,6 @@ let [suc,setsuc]=useState(false)
 let [err,seterr]=useState(false)
   useEffect(()=>{
     props.message("contact");
-    console.log()
   })
  async function sub(params) {
   let clone=data;
@@ -20,6 +19,7 @@ let [err,seterr]=useState(false)
    }}).catch((e)=>{console.log(e)})
    setTimeout(() => {
     setsuc(false)
+    seterr(false)
    }, 5000);
   }
   return (
@@ -27,6 +27,10 @@ let [err,seterr]=useState(false)
       <div className="row me-0 justify-content-center align-items-center">
 {suc && <div className='col-12 alert alert-dismissible alert-success me-4'>
   <div className="btn-close" onClick={()=>{setsuc(false)}}>
+    </div>
+    send mail successfully</div>}
+    {err && <div className='col-12 alert alert-dismissible alert-success me-4'>
+  <div className="btn-close" onClick={()=>{seterr(false)}}>
     </div>
     send mail successfully</div>}
         <div className="col-12 mt-3 mt-md-0">
