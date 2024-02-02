@@ -4,47 +4,64 @@ import emailjs from 'emailjs-com'
 import {motion} from 'framer-motion'
 function Contact(props) {
   let [data,setData]=useState({to_name:'',message:'',email:''});
-let [suc,setsuc]=useState(true)
+let [suc,setsuc]=useState(false)
 let [err,seterr]=useState(false);
 let [cuserr,setcus]=useState({email:false,name:false,message:false});
-let [valid,setvalid]=useState(false)
+let [valid,setvalid]=useState(true)
   useEffect(()=>{
     props.message("contact");
   })
  async function sub(params) {
+  seterr(false)
+  setsuc(false)
   let clone=data;
-  setvalid(false)
+  setvalid(true)
   setcus({email:false,name:false,message:false})
   if(clone.email == ''){
     setcus((prev)=>{return {...prev,email:true}})
-  setvalid(true)
+  setvalid(false)
   }
   if(clone.to_name == ''){
     setcus((prev)=>{return {...prev,name:true}})
-  setvalid(true)
+  setvalid(false)
   }
   if(clone.message == ''){
     setcus((prev)=>{return {...prev,message:true}})
-  setvalid(true)
+  setvalid(false)
   }
   setData({to_name:'',message:'',email:''})
-   await emailjs.init('pJdjQkbV3aLx7enpa');
-   await emailjs.send('service_cut4955','template_wd4krr7',clone).then((data)=>{if(data.status==200){setsuc(true)}else{
-    seterr(true)
-   }}).catch((e)=>{console.log(e)})
-   setTimeout(() => {
-    setsuc(false)
-    seterr(false)
-   }, 5000);
+  setvalid(async (valid)=>{
+    if(valid){
+       await emailjs.init('pJdjQkbV3aLx7enpa');
+  
+       await emailjs.send('service_cut4955','template_wd4krr7',clone).then((data)=>{
+        if(data.status==200)
+        {setsuc(true)}
+        else{
+        throw 'not valid data'
+      }}).catch((e)=>{
+        seterr(true)
+      })
+       setTimeout(() => {
+        setsuc(false)
+       }, 5000);
+     }else{
+      seterr(true)
+      setTimeout(()=>{
+        seterr(false)
+      },5000)
+     }
+  })
   }
+  
   return (
     <div className='ms-0 me-0 ps-md-5 pt-md-5' style={{minHeight:'86vh',marginTop:'7vh'}}>
       <div className="row me-0 ms-0 justify-content-center align-items-center">
-{suc && <div className='col-11 mt-4 alert alert-dismissible alert-success'>
+{suc && <div className='col-11 mt-5  alert alert-dismissible alert-success'>
   <div className="btn-close" onClick={()=>{setsuc(false)}}>
     </div>
     send mail successfully</div>}
-    {err && <div className='col-12 alert alert-dismissible alert-danger'>
+    {err && <div className='col-11 mt-5 alert alert-dismissible alert-danger'>
   <div className="btn-close" onClick={()=>{seterr(false)}}>
     </div>
     send mail faild</div>}
@@ -72,12 +89,14 @@ let [valid,setvalid]=useState(false)
     <i className="fa-li fa fa-square"></i>
       <div className="col-11 form-group"><label className='form-check-label mt-3 fw-6'>Name</label></div>
       <div className="col-11"><input type="text" value={data.to_name} placeholder='Enter Your Name' onChange={(e)=>{setData((prev)=>{return {...prev,to_name:e.target.value}})}} className='form-control mt-3'/></div>
-      {cuserr.name && <label>Please enter your name</label>}
+      {cuserr.name && <label className='form-lable col-11 mt-1 text-danger'>Please enter your name</label>}
       <div className="col-11"><label className='form-check-label mt-3' htmlFor="">Email</label></div>
-      <div className="col-11"><input type="email" placeholder='Enter your email' value={data.email} onChange={(e)=>{setData((prev)=>{return {...prev,email
+      <div className="col-11"><input type="email" placeholder='Enter your email ' value={data.email} onChange={(e)=>{setData((prev)=>{return {...prev,email
         :e.target.value}})}} className='form-control mt-3' /></div>
+      {cuserr.email && <label className='form-lable col-11 mt-1 text-danger'>Please enter your email</label>}
       <div className="col-11"><label className='form-check-label mt-3' htmlFor="">Message</label></div>
       <div className="col-11"><textarea name="" placeholder='Enter the Message' value={data.message} onChange={(e)=>{setData((prev)=>{return {...prev,message:e.target.value}})}} className='form-control mt-3' id="" cols="3"></textarea></div>
+      {cuserr.message && <label className='form-lable col-11 mt-1 text-danger'>Please enter message</label>}
       <div className="col-11 d-flex justify-content-end "><button className="btn btn-primary mt-3" onClick={()=>{sub()}}>Submit</button></div>
  
 </div>
