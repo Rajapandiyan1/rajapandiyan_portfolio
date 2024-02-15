@@ -30,6 +30,7 @@ function Project(props) {
             </h5>
           </div>
         </div>
+        
         <div className="col-12 col-sm-10 col-md-4 col-lg-3 mt-5">
           <div className="card" style={{ width: '100%', minHeight: '300px' }}>
             <div className="card-img-top">
